@@ -1,15 +1,14 @@
-FROM python:3.9-slim
+db:
+  image: kedarmahesh/python-code-library-db:v1
 
-WORKDIR /app
+auth_service:
+  image: kedarmahesh/python-code-library-auth:v1
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+book_service:
+  image: kedarmahesh/python-code-library-book:v1
 
-# Copy app.py + templates
-COPY app.py .
-COPY templates ./templates
+borrow_service:
+  image: kedarmahesh/python-code-library-borrow:v1
 
-EXPOSE 5000
-
-CMD ["python", "app.py"]
-
+frontend:
+  image: kedarmahesh/python-code-library-frontend:v1
