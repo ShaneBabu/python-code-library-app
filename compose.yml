@@ -1,7 +1,7 @@
----
+```yaml
 services:
   db:
-    image: shaikmustafa/arshad:db
+    image: kedarmahesh/python-code-library-db:v1
     deploy:
       replicas: 1
     ports:
@@ -10,7 +10,7 @@ services:
       - mynetwork
 
   auth_service:
-    image: shaikmustafa/arshad:auth
+    image: kedarmahesh/python-code-library-auth:v1
     deploy:
       replicas: 1
     ports:
@@ -19,10 +19,9 @@ services:
       - mynetwork
     depends_on:
       - db
-    
 
   book_service:
-    image: shaikmustafa/arshad:book
+    image: kedarmahesh/python-code-library-book:v1
     deploy:
       replicas: 1
     ports:
@@ -31,8 +30,9 @@ services:
       - mynetwork
     depends_on:
       - db
+
   borrow_service:
-    image: shaikmustafa/arshad:borrow
+    image: kedarmahesh/python-code-library-borrow:v1
     deploy:
       replicas: 1
     ports:
@@ -43,7 +43,7 @@ services:
       - db
 
   frontend:
-    image: shaikmustafa/arshad:frontend
+    image: kedarmahesh/python-code-library-frontend:v1
     deploy:
       replicas: 1
     ports:
@@ -57,4 +57,5 @@ services:
 
 networks:
   mynetwork:
-    driver: bridge
+    driver: overlay
+```
